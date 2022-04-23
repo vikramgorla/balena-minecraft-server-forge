@@ -2,15 +2,14 @@ version: '2'
 services:
   mc-server:
     network_mode: host
-    restart: always
-    build: ./mc-server
+    restart: no
+    image: itzg/minecraft-server:latest
     privileged: true
     labels:
       io.balena.features.dbus: 1
       io.balena.features.supervisor-api: 1
     volumes:
-      - serverfiles:/usr/src/serverfiles
-      - servercache:/servercache
+      - minecraft-data:/data
     ports:
       - "25565:25565/udp"
       - "25565:25565/tcp"
@@ -24,8 +23,7 @@ services:
     labels:
       io.balena.features.dbus: 1
     volumes:
-      - serverfiles:/serverfiles
-      - servercache:/servercache
+      - minecraft-data:/serverfiles
     ports:
       - "22:22/udp"
       - "22:22/tcp"
@@ -46,5 +44,4 @@ services:
       - "25575:25575/udp"
       - "25575:25575/tcp"
 volumes:
-  serverfiles:
-  servercache:
+  minecraft-data:
