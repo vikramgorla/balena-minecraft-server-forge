@@ -1,3 +1,5 @@
+This readme file is now almost obsolete as I have changed services after the fork, will rewrite when I get time!!
+
 ![Balena Server Logo](images/logo.png)
 
 # Minecraft Server
