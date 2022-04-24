@@ -4,6 +4,8 @@ services:
     network_mode: host
     restart: no
     image: itzg/minecraft-server:latest
+    tty: true
+    stdin_open: true
     privileged: true
     labels:
       io.balena.features.dbus: 1
@@ -27,21 +29,5 @@ services:
     ports:
       - "22:22/udp"
       - "22:22/tcp"
-  wifi-connect:
-    build: ./wifi-connect
-    restart: always
-    network_mode: host
-    privileged: true
-    labels:
-      io.balena.features.dbus: '1'
-      io.balena.features.firmware: '1'
-  balena-rcon:
-    network_mode: host
-    restart: always
-    build: ./balena-rcon
-    privileged: true
-    ports:
-      - "25575:25575/udp"
-      - "25575:25575/tcp"
 volumes:
   minecraft-data:
